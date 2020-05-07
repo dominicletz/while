@@ -33,7 +33,7 @@ While can be installed by adding `while` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:while, "~> 0.1.0"}
+    {:while, "~> 0.2.1"}
   ]
 end
 ```
