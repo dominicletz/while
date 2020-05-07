@@ -17,7 +17,7 @@ defmodule While do
 
     For changing local variables there is a reduce like variant with two parameters:
     ```
-      result = while <varname>, <expression> do
+      while <varname>, <expression> do
         <loop>
       end
     ```
@@ -29,7 +29,7 @@ defmodule While do
 
       def demo_local() do
         cnt = 1
-        cnt = while_with cnt, cnt < 10 do
+        while_with cnt, cnt < 10 do
           cnt + 1
         end
 
@@ -40,7 +40,7 @@ defmodule While do
   """
   defmacro while_with(name, clause, do: expression) do
     quote do
-      while_with_impl(
+      unquote(name) = while_with_impl(
         fn unquote(name) -> unquote(clause) end,
         fn unquote(name) -> unquote(expression) end,
         unquote(name)

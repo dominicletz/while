@@ -16,10 +16,9 @@ defmodule WhileTest do
   test "demo_local()" do
     cnt = 1
 
-    cnt =
-      while_with cnt, cnt < 10 do
-        cnt + 1
-      end
+    while_with cnt, cnt < 10 do
+      cnt + 1
+    end
 
     IO.puts("Current value is #{cnt}")
     assert cnt == 10
