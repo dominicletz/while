@@ -1,27 +1,37 @@
 # While Loop
 
-Simple while loop:
+Elixir while macro that passes state:
+
+```
+while (<varname>,) <expression> do
+  <loop>
+end
+```
+
+Example:
 
 ```elixir
 import While
 
-def demo_global() do
-  cnt = :counters.new(1, [:atomics])
-  while :counters.get(cnt, 1) < 10 do
-    :counters.add(cnt, 1, 1)
-  end
-
-  IO.puts("Current value is #{:counters.get(cnt, 1)}")
+cnt = 1
+cnt = while cnt, cnt < 10 do
+  cnt + 1
 end
 
-def demo_local() do
-  cnt = 1
-  cnt = while cnt, cnt < 10 do
-    cnt + 1
-  end
+IO.puts("Current value is #{cnt}")
+```
 
-  IO.puts("Current value is #{cnt}")
+And without state parameter:
+
+```elixir
+import While
+
+ref = :counters.new(1, [:atomics])
+while :counters.get(ref, 1) < 10 do
+  :counters.add(ref, 1, 1)
 end
+
+IO.puts("Current value is #{:counters.get(ref, 1)}")
 ```
 
 Please checkout the full documentation at: https://hexdocs.pm/while/While.html

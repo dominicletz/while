@@ -80,10 +80,11 @@ defmodule WhileTest do
     p = [1.01, 1.02, 1.04]
     i = 1.01
 
-    while_with i, Enum.any?(p, &(i == &1)) do
-      IO.puts(i)
-      i + 0.01
-    end
+    i =
+      while i, Enum.any?(p, &(i == &1)) do
+        IO.puts(i)
+        i + 0.01
+      end
 
     assert i == 1.03
   end
