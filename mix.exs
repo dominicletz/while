@@ -1,4 +1,4 @@
-defmodule Profiler.MixProject do
+defmodule While.MixProject do
   use Mix.Project
 
   def project do
@@ -29,7 +29,7 @@ defmodule Profiler.MixProject do
 
   # Run "mix help compile.app" to learn about applications.
   def application do
-    []
+    [extra_applications: [:eex]]
   end
 
   # Run "mix help deps" to learn about dependencies.
