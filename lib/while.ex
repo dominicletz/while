@@ -1,7 +1,21 @@
 defmodule While do
   @moduledoc """
-    While module implements a simple while macro. Use it in your code as follow
+    While module implements a general `reduce_while(acc, fun)`
 
+    ```
+      import While
+
+      i = reduce_while(1, fn i ->
+        if i < 10 do
+          {:cont, i + 1}
+        else
+          {:halt, i}
+        end
+      end)
+    ```
+
+
+    Also includes macro syntax sugar for even simpler While like constructs:
     ```
       import While
 
@@ -112,7 +126,7 @@ defmodule While do
     ```
       i = reduce_while(1, fn i ->
         if i < 10 do
-          {:continue, i + 1}
+          {:cont, i + 1}
         else
           {:halt, i}
         end
@@ -122,6 +136,7 @@ defmodule While do
   def reduce_while(acc, fun) do
     case fun.(acc) do
       {:halt, new} -> new
+      {:cont, new} -> reduce_while(new, fun)
       {:continue, new} -> reduce_while(new, fun)
     end
   end

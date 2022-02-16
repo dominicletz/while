@@ -4,13 +4,17 @@ defmodule While.MixProject do
   def project do
     [
       app: :while,
-      version: "0.2.3",
+      version: "0.2.4",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
       # Hex
-      description: "While provides a while loop macro.",
+      description: """
+        Provides a general functional `reduce_while(acc, fun)` for use without an Enum.
+        Additionally provides syntax sugar to simulate a non-functional `while` as proof
+        of concept on what can be done with macros.
+      """,
       package: [
         licenses: ["Apache 2.0"],
         maintainers: ["Dominic Letz"],

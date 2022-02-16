@@ -1,4 +1,20 @@
-# While Loop
+# General `reduce_while`
+
+The module implements a general `reduce_while(acc, fun)` similiar to the `Enum.reduce_while()` but without an Enum. This often can save you from implementing a recursive function. 
+
+```
+  import While
+  
+  i = reduce_while(1, fn i ->
+    if i < 10 do
+      {:cont, i + 1}
+    else
+      {:halt, i}
+    end
+  end)
+```
+
+## While Loop Macro Syntax Sugar
 
 Elixir while macro that passes state:
 
@@ -43,7 +59,7 @@ While can be installed by adding `while` to your list of dependencies in `mix.ex
 ```elixir
 def deps do
   [
-    {:while, "~> 0.2.1"}
+    {:while, "~> 0.2.4"}
   ]
 end
 ```
