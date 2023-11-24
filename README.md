@@ -1,4 +1,4 @@
-# General `reduce_while`
+# General `reduce_while` ![Build](https://github.com/dominicletz/while/actions/workflows/test.yml/badge.svg)
 
 The module implements a general `reduce_while(acc, fun)` similiar to the `Enum.reduce_while()` but without an Enum. This often can save you from implementing a recursive function. 
 
